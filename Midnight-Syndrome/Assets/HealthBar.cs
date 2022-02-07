@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    public float maxHealth = 7;
+    float minHealth = 0;
+    public float currentHealth;
 
-    public Slider umbrella;
+    [SerializeField]
+    Slider umbrella;
 
-    public void SetMaxHealth(int health)
+    void Start()
     {
-        umbrella.maxValue = health;
-        umbrella.value = health;
+        umbrella.value = minHealth;
+        currentHealth = umbrella.value;
     }
 
-    public void SetHealth(int health)
-    {
-        umbrella.value = health;
-    }
 
 }
