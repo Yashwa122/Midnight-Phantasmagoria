@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Stair
+  - raindrop
   layers:
   - Default
   - TransparentFX
