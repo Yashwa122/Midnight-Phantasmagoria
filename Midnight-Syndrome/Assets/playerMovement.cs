@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public float moveSpeed = 5f;
-    public Rigidbody2D player;
+    public Rigidbody2D Player;
 
     Vector2 movement;
 
@@ -19,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        player.MovePosition(player.position + movement * moveSpeed * Time.fixedDeltaTime);
+        Player.MovePosition(Player.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
-
 }
