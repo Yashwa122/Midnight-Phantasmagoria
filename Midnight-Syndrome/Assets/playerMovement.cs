@@ -6,18 +6,35 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public Rigidbody2D Player;
+    public Animator animator;
 
-    Vector2 movement;
+    private Vector2 moveDirection;
 
     // Update is called once per frame
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        ProcessInputs();
     }
 
     void FixedUpdate()
     {
-        Player.MovePosition(Player.position + movement * moveSpeed * Time.fixedDeltaTime);
+        Move();
+    }
+
+    void ProcessInputs()
+    {
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+
+        moveDirection = new Vector2(moveX, moveY).normalized;
+
+        animator.SetFloat("Horizontal", moveX);
+        animator.SetFloat("Vertical", moveY);
+        animator.SetFloat("Speed", moveDirection.sqrMagnitude);
+    }
+
+    void Move()
+    {
+        Player.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     }
 }
